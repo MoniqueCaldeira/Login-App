@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
       padding:15,
       margin: 10,
       borderRadius: 50,
-
    },
    input:{
       fontFamily: 'Inter_700Bold',

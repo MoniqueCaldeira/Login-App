@@ -6,7 +6,7 @@ export default function Home({navigation}) {
     <View style={styles.container}>
       <Text>Home</Text>
       <StatusBar style="auto" />
-      <Button title='Sair' onPress={()=> navigation.navigate("Login")}/>
+      <Button title='Sair' onPress={()=> navigation.navigate("Out")}/>
     </View>
   );
 }
