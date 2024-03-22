@@ -1,6 +1,7 @@
 import Stack from "./src/navigation/stack"
 import { NavigationContainer } from '@react-navigation/native';
 import { Loading } from "./src/components/loading";
+
 import { 
   Inter_400Regular,
   Inter_500Medium,

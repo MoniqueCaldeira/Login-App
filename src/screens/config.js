@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBKad-evgL5f15oN2c-CIrguQJtbuRADqs",
@@ -16,3 +16,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app)
 
+// Initialize Realtime Database
+export const db = getDatabase(app);

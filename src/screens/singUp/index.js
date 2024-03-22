@@ -7,6 +7,8 @@ import Input from '../../components/input';
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config';
+import { db } from '../config';
+import { ref, set } from 'firebase/database'
 
 export default function SingUp({ navigation }) {
    const [userName, setUserName] = useState("");
@@ -14,12 +16,23 @@ export default function SingUp({ navigation }) {
    const [password, setPassword] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
 
-   function registerUser(email, password, confirmPassword, userName) {
+   async function registerUser(email, password, confirmPassword, userName) {
       if (password == confirmPassword) {
-         createUserWithEmailAndPassword(auth, email, password)
+         await createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+
+               //Create database
+               set(ref(db, 'users/' + auth.currentUser.uid), {
+                  username: userName,
+                  email: email,
+                }).then(()=>{
+                  
+                })
+                .catch((error) => {
+                  console.log(error)
+                })
+
                // Signed in 
-               const user = userCredential.user;
                Alert.alert("Usuário Cadastrado com Sucesso!");
                navigation.navigate("Login")
             })
@@ -69,7 +82,7 @@ export default function SingUp({ navigation }) {
             secureTextEntry={true}
          />
 
-         <Button color={"#aab0ff"} title='Criar Conta' onPress={() => registerUser(email, password, confirmPassword, userName)} />
+         <Button color={"#aab0ff"} title='Criar Conta' onPress={() => registerUser(email, password, confirmPassword, userName)}/>
 
          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
             <Text style={styles.loginText}>Login</Text>
