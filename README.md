@@ -1,6 +1,6 @@
 # Login-App
 
-## Aplicativo de Atenticação utilizando:
+## Aplicativo de Autenticação utilizando:
 * Expo
 * Stack Navigation
 * Firebase Auth
